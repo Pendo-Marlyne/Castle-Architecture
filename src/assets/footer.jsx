@@ -2,13 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowUp, Instagram, Linkedin, Facebook } from 'lucide-react';
 import { Wordmark, navLinks } from './Navbar.jsx';
 import { site, placeholder } from '../config/site.js';
-
-const services = [
-  'Architectural Design',
-  'Residential Architecture',
-  'Commercial Architecture',
-  'Renovation and Adaptive Reuse',
-];
+import { services } from '../data/services.js';
 
 const socials = [
   { key: 'instagram', label: 'Instagram', Icon: Instagram },
@@ -37,7 +31,7 @@ export default function Footer() {
                     aria-label={`${label} (opens in a new tab)`}
                     className="flex h-10 w-10 items-center justify-center border border-white/30 transition-colors hover:border-gold hover:text-gold"
                   >
-                    <Icon size={18} />
+                    <Icon size={18} aria-hidden="true" />
                   </a>
                 </li>
               ))}
@@ -49,9 +43,7 @@ export default function Footer() {
           <h2 className="font-sans text-xs font-medium uppercase tracking-eyebrow text-gold">Explore</h2>
           <ul className="mt-5 space-y-3 text-sm">
             {navLinks.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className="transition-colors hover:text-gold">{l.label}</Link>
-              </li>
+              <li key={l.to}><Link to={l.to} className="transition-colors hover:text-gold">{l.label}</Link></li>
             ))}
           </ul>
         </nav>
@@ -59,9 +51,9 @@ export default function Footer() {
         <div>
           <h2 className="font-sans text-xs font-medium uppercase tracking-eyebrow text-gold">Expertise</h2>
           <ul className="mt-5 space-y-3 text-sm">
-            {services.map((s) => (
-              <li key={s}>
-                <Link to="/expertise" className="transition-colors hover:text-gold">{s}</Link>
+            {services.slice(0, 5).map((s) => (
+              <li key={s.slug}>
+                <Link to={`/expertise#${s.slug}`} className="transition-colors hover:text-gold">{s.title}</Link>
               </li>
             ))}
           </ul>

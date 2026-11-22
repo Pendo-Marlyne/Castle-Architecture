@@ -14,6 +14,8 @@ const make = (label, alt, { width = 1600, height = 1000, tone = 'dark' } = {}) =
   tone, // placeholder colour: 'dark' | 'light'
 });
 
+const hero = { width: 2400, height: 1400 };
+
 // ---- Project galleries (demonstration content) ----
 // Keys follow the pattern <prefix>1, <prefix>2, ... and are referenced by the
 // `gallery` array of each project in projects.js.
@@ -57,6 +59,17 @@ const projectGalleries = {
 };
 
 export const images = {
+  // Insights and Contact
+  insightsHero: make('Hero: insights', 'Open sketchbook with architectural notes beside a scale model', hero),
+  contactHero: make('Hero: contact', 'Entrance to a daylit architectural studio', hero),
+  articleBrief: make('Article: briefing', 'Hand-drawn diagram of rooms and adjacencies for a project brief', { tone: 'light' }),
+  articleDaylight: make('Article: daylight', 'Sunlight crossing a timber floor through a tall window', { tone: 'dark' }),
+  articleShading: make('Article: shading', 'Deep veranda and louvres shading a building facade', { tone: 'light' }),
+  articleRenovate: make('Article: renovation', 'Existing building with scaffolding and a new opening being formed', { tone: 'dark' }),
+  articleStreet: make('Article: street', 'Active ground-floor shopfronts along a pedestrian street', { tone: 'light' }),
+  articleRooms: make('Article: rooms', 'Home interior with a sliding partition between two rooms', { tone: 'dark' }),
+  ...projectGalleries,
+
   // Home and shared
   heroHome: make(
     'Hero: contemporary residence',
