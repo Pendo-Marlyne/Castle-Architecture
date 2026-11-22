@@ -14,6 +14,48 @@ const make = (label, alt, { width = 1600, height = 1000, tone = 'dark' } = {}) =
   tone, // placeholder colour: 'dark' | 'light'
 });
 
+// ---- Project galleries (demonstration content) ----
+// Keys follow the pattern <prefix>1, <prefix>2, ... and are referenced by the
+// `gallery` array of each project in projects.js.
+const galleryShot = { width: 1600, height: 1000 };
+const gallery = (prefix, label, shots) =>
+  Object.fromEntries(
+    shots.map(([alt, tone], i) => [`${prefix}${i + 1}`, make(`${label} ${i + 1}`, alt, { ...galleryShot, tone })])
+  );
+
+const projectGalleries = {
+  ...gallery('galCourtyard', 'Courtyard house', [
+    ['Central planted courtyard seen from a covered veranda', 'dark'],
+    ['Living room opening onto the courtyard through full-height glazing', 'light'],
+    ['Timber screen casting patterned shadows on a masonry wall', 'dark'],
+  ]),
+  ...gallery('galMeridian', 'Meridian offices', [
+    ['Glazed office facade with a regular structural rhythm', 'light'],
+    ['Open collaboration area with generous daylight', 'dark'],
+    ['Quiet focus room with timber lining and a single window', 'light'],
+  ]),
+  ...gallery('galAtrium', 'Atrium learning centre', [
+    ['Daylit central atrium with open stairs and balconies', 'dark'],
+    ['Classroom with a wall of tall windows and flexible furniture', 'light'],
+    ['Entrance canopy and landscaped forecourt', 'dark'],
+  ]),
+  ...gallery('galTerrace', 'Terrace mixed-use', [
+    ['Stepped terraces with planting on a mixed-use concept model', 'light'],
+    ['Ground-floor retail arcade shown in a concept view', 'dark'],
+    ['Section drawing showing shops, workspace and homes stacked', 'light'],
+  ]),
+  ...gallery('galRidgeline', 'Ridgeline residence', [
+    ['Hillside house stepping down the slope with long horizontal lines', 'dark'],
+    ['Living area with a framed view across the valley', 'light'],
+    ['Site plan showing the building following the contours', 'dark'],
+  ]),
+  ...gallery('galLoft', 'Loft interior study', [
+    ['Converted loft with exposed structure and warm timber joinery', 'light'],
+    ['Built-in storage wall integrated with a reading nook', 'dark'],
+    ['Material palette of oak, plaster and brass samples', 'light'],
+  ]),
+};
+
 export const images = {
   // Home and shared
   heroHome: make(
